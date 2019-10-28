@@ -1,0 +1,14 @@
+
+CREATE DATABASE club;
+USE club;
+
+CREATE TABLE socios (
+  idsocio INT(3) PRIMARY KEY AUTO_INCREMENT,
+  nombre VARCHAR(20) NOT NULL,
+  apellido VARCHAR(20) NOT NULL,
+  direccion VARCHAR(30) NOT NULL,
+  edad INT(3) NOT NULL,
+  fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+DESCRIBE socios;
