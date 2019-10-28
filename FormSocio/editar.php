@@ -50,7 +50,7 @@ if (isset($_POST['actualizar'])) {
             <input type="text" name="direccion" class="form-control" value="<?php echo $direccion;?>" placeholder="Actualizar direccion" maxlength="30" required autofocus/>
         </div>
         <div class="form-group">
-            <input type="number" name="edad" class="form-control" value="<?php echo $edad;?>" placeholder="Actualizar edad" maxlength="3" required autofocus/>
+          <input type="number" name="edad" class="form-control" value="<?php echo $edad;?>" placeholder="Actualizar edad" maxlength="3" min="1" step="1" max="100" required autofocus/>
         </div>
         <button class="btn-success" name="actualizar">
           Actualizar
