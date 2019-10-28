@@ -108,8 +108,8 @@
                 <tbody>
 
                 <?php 
-                $busquedasocio = isset($_POST['busquedaSocio']);
-                if (!empty($busquedasocio) && ($busquedasocio != "")){
+                if (!empty($_POST['busquedaSocio']) && ($_POST['busquedaSocio'] != "")){
+                    $busquedasocio = trim($_POST['busquedaSocio']);
                     $query_search = "SELECT * FROM socios WHERE nombre='$busquedasocio' ORDER BY idsocio";
                     $result_query_search = mysqli_query($conexion, $query_search);
                     while($row = mysqli_fetch_assoc($result_query_search)){ ?>
