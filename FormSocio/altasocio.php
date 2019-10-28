@@ -8,7 +8,7 @@ if (isset($_POST['Registrarme'])) {
     $edad = trim($_POST['edad']);
     
     // Validamos campos de formulario
-    if (!empty($idsocio) && (is_numeric($idsocio)) && (!is_numeric($nombre)) && (!is_numeric($apellido)) && (!is_numeric($direccion)) && (is_numeric($edad)) && ($edad >"1") && ($edad <="99")) {
+    if (!empty($idsocio) && (is_numeric($idsocio)) && (!is_numeric($nombre)) && (!is_numeric($apellido)) && (!is_numeric($direccion)) && (is_numeric($edad)) && ($edad >"1") && ($edad <="100")) {
         $numeroidquery = mysqli_query($conexion,"select * from socios where idsocio='$idsocio'");
 	if (mysqli_num_rows($numeroidquery)<1){
         $query = "INSERT INTO socios(idsocio, nombre, apellido, direccion, edad) VALUES ('$idsocio', '$nombre', '$apellido', '$direccion', '$edad')";
