@@ -9,18 +9,29 @@ if (isset($_POST['Registrarme'])) {
     
     // Validamos campos de formulario
     if (!empty($idsocio) && (is_numeric($idsocio)) && (!is_numeric($nombre)) && (!is_numeric($apellido)) && (!is_numeric($direccion)) && (is_numeric($edad)) && ($edad >"1") && ($edad <="99")) {
+        $numeroidquery = mysqli_query($conexion,"select * from socios where idsocio='$idsocio'");
+	if (mysqli_num_rows($numeroidquery)<1){
         $query = "INSERT INTO socios(idsocio, nombre, apellido, direccion, edad) VALUES ('$idsocio', '$nombre', '$apellido', '$direccion', '$edad')";
         $result = mysqli_query($conexion, $query);
-        if(!$result) {
-            die("Error en la consulta a la BD.");
-        }
         $_SESSION['message'] = 'Socio ingresado con éxito';
         $_SESSION['message_type'] = 'success';
         header('Location: index.php');
+    }else{
+        //si existen duplicados muestro mensaje
+        $_SESSION['message'] = 'Ya existe ese id de socio ingresado';
+        $_SESSION['message_type'] = 'warning';
+        header('Location: index.php');
+    }
     }else {
-        die("Los campos no son válidos");
+        //si existen duplicados muestro mensaje
+		$_SESSION['message'] = 'Ingrese datos válidos';
+        $_SESSION['message_type'] = 'warning';
+        header('Location: index.php');
     }
 }else{
-    die("Error al enviar el formulario");
+		echo "<script language='javascript'>";
+		echo "alert('Compruebe los campos inválidos')";
+		echo "</script>";
+        header('Location: index.php');
 }
 ?>
