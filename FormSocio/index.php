@@ -22,7 +22,7 @@
                 <form action="altasocio.php" method="POST">
                     <!-- Alta ID Socio-->
                     <div class="form-group has-warning">
-                        <input type="number" name="idsocio" class="form-control" placeholder="Ingrese aqui su ID" maxlength="3" required min="1" step="1" max="999" required autofocus autofocus/>
+                        <input type="number" name="idsocio" class="form-control" placeholder="Ingrese aqui su ID" maxlength="3" required min="1" step="1" required autofocus/>
                     </div>
 
                     <!--Alta Nombre-->
@@ -42,7 +42,7 @@
 
                     <!--Alta Edad-->
                     <div class="form-group has-warning">
-                        <input type="number" name="edad" class="form-control" placeholder="Ingrese Edad" maxlength="2" required min="1" step="1" max="99" autofocus/>
+                        <input type="number" name="edad" class="form-control" placeholder="Ingrese Edad" maxlength="2" required min="1" step="1" max="100" autofocus/>
                     </div>
 
                     <!--Envio Formulario-->
