@@ -3,7 +3,7 @@
 <?php include('includes/header.php'); ?>
 
 
-<main class="container p-4">
+<main class="container p-2">
     <div class="row">
         <div class="col-md-4">
             <!-- Mensajes -->
