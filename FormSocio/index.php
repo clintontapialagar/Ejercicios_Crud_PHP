@@ -37,7 +37,7 @@
 
                     <!--Alta Direccion-->
                     <div class="form-group has-warning">
-                        <input type="text" name="direccion" class="form-control" placeholder="Ingrese Dirección" pattern="[a-z-0-9]{3,30}" maxlength="30" required autofocus/>
+                        <input type="text" name="direccion" class="form-control" placeholder="Ingrese Dirección" pattern="/[a-zA-z]{1,30}\s[0-9]{1,4}/" maxlength="30" required autofocus/>
                     </div>
 
                     <!--Alta Edad-->
