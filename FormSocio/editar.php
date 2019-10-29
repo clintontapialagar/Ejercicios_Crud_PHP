@@ -38,19 +38,19 @@ if (isset($_POST['actualizar'])) {
       <div class="card card-body">
       <form action="editar.php?idsocio=<?php echo $_GET['idsocio']; ?>" method="POST">
         <div class="form-group">
-            <input type="number" name="idsocio" class="form-control" value="<?php echo $idsocio; ?>" placeholder="Actualizar ID" disabled>
+            <input type="number" name="idsocio" class="form-control" value="<?php echo $idsocio; ?>" placeholder="Actualizar ID" pattern="[1-9]{1,3}" disabled>
         </div>
         <div class="form-group">
-            <input type="text" name="nombre" class="form-control" value="<?php echo $nombre;?>" placeholder="Actualizar nombre" maxlength="20" required autofocus/>
+            <input type="text" name="nombre" class="form-control" value="<?php echo $nombre;?>" placeholder="Actualizar nombre" pattern="[a-z]{3,20}" maxlength="20" required autofocus/>
         </div>
         <div class="form-group">
-            <input type="text" name="apellido" class="form-control" value="<?php echo $apellido;?>" placeholder="Actualizar apellido" maxlength="20" required autofocus/>
+            <input type="text" name="apellido" class="form-control" value="<?php echo $apellido;?>" placeholder="Actualizar apellido" pattern="[a-z]{3,20}" maxlength="20" required autofocus/>
         </div>
         <div class="form-group">
-            <input type="text" name="direccion" class="form-control" value="<?php echo $direccion;?>" placeholder="Actualizar direccion" maxlength="30" required autofocus/>
+            <input type="text" name="direccion" class="form-control" value="<?php echo $direccion;?>" placeholder="Actualizar direccion" pattern="[a-z-0-9]{3,30}" maxlength="30" required autofocus/>
         </div>
         <div class="form-group">
-          <input type="number" name="edad" class="form-control" value="<?php echo $edad;?>" placeholder="Actualizar edad" maxlength="3" min="1" step="1" max="100" required autofocus/>
+          <input type="number" name="edad" class="form-control" value="<?php echo $edad;?>" placeholder="Actualizar edad" pattern="[0-9]{1,3}" maxlength="3" min="1" step="1" max="100" required autofocus/>
         </div>
         <button class="btn-success" name="actualizar">
           Actualizar
