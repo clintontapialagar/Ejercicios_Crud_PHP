@@ -60,7 +60,7 @@
                     <div class="form-group has-search">
                     <span class="fa fa-search form-control-feedback"></span>
                     <form action="index.php" method="POST">
-                        <input type="search" name="busquedaSocio" class="form-control" placeholder="Búsqueda de socio por nombre" maxlength="20" required autofocus>
+                        <input type="search" name="busquedaSocio" class="form-control" placeholder="Búsqueda de socio" maxlength="20" required autofocus>
                     </form>
                     </div>
                     <th>ID</th>
@@ -110,7 +110,7 @@
                 <?php 
                 if (!empty($_POST['busquedaSocio']) && ($_POST['busquedaSocio'] != "")){
                     $busquedasocio = trim($_POST['busquedaSocio']);
-                    $query_search = "SELECT * FROM socios WHERE nombre='$busquedasocio' ORDER BY idsocio";
+                    $query_search = "SELECT * FROM socios WHERE nombre='$busquedasocio' OR apellido='$busquedasocio' OR direccion='$busquedasocio' ORDER BY idsocio";
                     $result_query_search = mysqli_query($conexion, $query_search);
                     while($row = mysqli_fetch_assoc($result_query_search)){ ?>
                     <tr>
