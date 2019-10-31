@@ -41,13 +41,13 @@ if (isset($_POST['actualizar'])) {
             <input type="number" name="idsocio" class="form-control" value="<?php echo $idsocio; ?>" placeholder="Actualizar ID" pattern="[1-9]{1,3}" disabled>
         </div>
         <div class="form-group">
-            <input type="text" name="nombre" class="form-control" value="<?php echo $nombre;?>" placeholder="Actualizar nombre" pattern="[a-z]{3,20}" maxlength="20" required autofocus/>
+            <input type="text" name="nombre" class="form-control" value="<?php echo $nombre;?>" placeholder="Actualizar nombre" pattern="[A-z]{3,20}" maxlength="20" required autofocus/>
         </div>
         <div class="form-group">
-            <input type="text" name="apellido" class="form-control" value="<?php echo $apellido;?>" placeholder="Actualizar apellido" pattern="[a-z]{3,20}" maxlength="20" required autofocus/>
+            <input type="text" name="apellido" class="form-control" value="<?php echo $apellido;?>" placeholder="Actualizar apellido" pattern="[A-z]{3,20}" maxlength="20" required autofocus/>
         </div>
         <div class="form-group">
-            <input type="text" name="direccion" class="form-control" value="<?php echo $direccion;?>" placeholder="Actualizar direccion" pattern="[a-zA-z]{1,30}\s[0-9]{1,4}" maxlength="30" required autofocus/>
+            <input type="text" name="direccion" class="form-control" value="<?php echo $direccion;?>" placeholder="Actualizar direccion" pattern="[A-z A-z 0-9]{3,30}" maxlength="30" required autofocus/>
         </div>
         <div class="form-group">
           <input type="number" name="edad" class="form-control" value="<?php echo $edad;?>" placeholder="Actualizar edad" pattern="[0-9]{1,3}" maxlength="3" min="1" step="1" max="100" required autofocus/>
