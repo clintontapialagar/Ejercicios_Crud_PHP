@@ -22,27 +22,27 @@
                 <form action="altasocio.php" method="POST">
                     <!-- Alta ID Socio-->
                     <div class="form-group has-warning">
-                        <input type="number" name="idsocio" class="form-control" placeholder="Ingrese aqui su ID" pattern="[1-9]{1,3}" maxlength="3" required min="1" step="1" required autofocus/>
+                        <input type="number" name="idsocio" class="form-control" placeholder="Ingrese aqui su ID" pattern="[1-9]{1,3}" maxlength="3" required min="1" step="1" max="10000" required autofocus/>
                     </div>
 
                     <!--Alta Nombre-->
                     <div class="form-group has-warning">
-                        <input type="text" name="nombre" class="form-control" placeholder="Ingrese su Nombre" pattern="[a-z]{3,20}" maxlength="20" required autofocus/>
+                        <input type="text" name="nombre" class="form-control" placeholder="Ingrese su Nombre" pattern="[A-z]{3,20}" maxlength="20" required autofocus/>
                     </div>
 
                     <!--Alta Apellido-->
                     <div class="form-group has-warning">
-                        <input type="text" name="apellido" class="form-control" placeholder="Ingrese Apellido" pattern="[a-z]{3,20}" maxlength="20" required autofocus/>
+                        <input type="text" name="apellido" class="form-control" placeholder="Ingrese Apellido" pattern="[A-z]{3,20}" maxlength="20" required autofocus/>
                     </div>
 
                     <!--Alta Direccion-->
                     <div class="form-group has-warning">
-                        <input type="text" name="direccion" class="form-control" placeholder="Ingrese Dirección" pattern="[a-zA-z]{1,30}\s[0-9]{1,4}" maxlength="30" required autofocus/>
+                        <input type="text" name="direccion" class="form-control" placeholder="Ingrese Dirección" pattern="[A-z A-z 0-9]{3,30}" maxlength="30" required autofocus/>
                     </div>
 
                     <!--Alta Edad-->
                     <div class="form-group has-warning">
-                        <input type="number" name="edad" class="form-control" placeholder="Ingrese Edad" pattern="[0-9]{1,3}" maxlength="2" required min="1" step="1" max="100" autofocus/>
+                        <input type="number" name="edad" class="form-control" placeholder="Ingrese Edad" pattern="[0-9]{1,3}" maxlength="3" min="1" step="1" max="100" required autofocus/>
                     </div>
 
                     <!--Envio Formulario-->
