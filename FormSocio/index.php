@@ -96,22 +96,21 @@
 
         <div class="col-md-8">
             <table class="table table-bordered">
-
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Direccion</th>
+                <th>Edad</th>
+            </tr>
+            </thead>
                 <?php 
                 if (!empty($_POST['busquedaSocio']) && ($_POST['busquedaSocio'] != "")){
                     $busquedasocio = trim($_POST['busquedaSocio']);
                     $query_search = "SELECT * FROM socios WHERE nombre='$busquedasocio' OR apellido='$busquedasocio' OR direccion='$busquedasocio' ORDER BY idsocio";
                     $result_query_search = mysqli_query($conexion, $query_search);
-                    while($row = mysqli_fetch_assoc($result_query_search)){ ?>
-                    <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nombre</th>
-                        <th>Apellido</th>
-                        <th>Direccion</th>
-                        <th>Edad</th>
-                    </tr>
-                    </thead>
+                    while($row = mysqli_fetch_assoc($result_query_search)){ ?
                     <tbody>
                     <tr>
                         <td><?php echo $row['idsocio']; ?></td>
