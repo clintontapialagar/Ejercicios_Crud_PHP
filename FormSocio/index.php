@@ -1,9 +1,8 @@
-<?php include("conexion.php"); ?>
+<?php include('conexion.php'); ?>
 
 <?php include('includes/header.php'); ?>
 
-
-<main class="container p-2">
+<main class="container p-4">
     <div class="row">
         <div class="col-md-4">
             <!-- Mensajes -->
@@ -19,10 +18,10 @@
 
             <!-- ADD TASK FORM -->
             <div class="card card-body">
-                <form action="altasocio.php" method="POST">
+                <form action="altasocio.php" method="POST" id="formulario">
                     <!-- Alta ID Socio-->
                     <div class="form-group has-warning">
-                        <input type="number" name="idsocio" class="form-control" placeholder="Ingrese aqui su ID" pattern="[1-9]{1,3}" maxlength="3" required min="1" step="1" max="10000" required autofocus/>
+                        <input type="number" name="idsocio" class="form-control" placeholder="Ingrese aqui su ID" pattern="[1-9]{1,3}" maxlength="3" min="1" step="1" max="10000" required autofocus/>
                     </div>
 
                     <!--Alta Nombre-->
@@ -42,11 +41,11 @@
 
                     <!--Alta Edad-->
                     <div class="form-group has-warning">
-                        <input type="number" name="edad" class="form-control" placeholder="Ingrese Edad" pattern="[0-9]{1,3}" maxlength="3" min="1" step="1" max="100" required autofocus/>
+                        <input type="number" name="edad" class="form-control" placeholder="Ingrese Edad" pattern="[0-9]{1,3}" maxlength="3" required min="1" step="1" max="100" autofocus/>
                     </div>
 
                     <!--Envio Formulario-->
-                    <input type="submit" name="Registrarme" class="btn btn-success btn-bloc" value="Registrarme"/>
+                    <input type="submit" name="Registrarme" id="Registrarme" class="btn btn-success btn-bloc" value="Registrarme"/>
                     <input type="reset" name="Borra" class="btn btn-success btn-bloc" value="Limpiar"/>
                 </form>
             </div>
@@ -58,9 +57,11 @@
                 <tr>
                     <!-- Actual search box Bootstrap 4-->
                     <div class="form-group has-search">
-                    <span class="fa fa-search form-control-feedback"></span>
+                    <span class="fa fa-search form-control-feedback">
+                    <div id="searchLoad"></div>
+                    </span>
                     <form action="index.php" method="POST">
-                        <input type="search" name="busquedaSocio" class="form-control" placeholder="Búsqueda de socio" maxlength="20" required autofocus>
+                    <input type="search" name="busquedaSocio" id="busquedaSocio" class="form-control" placeholder="Buscar socio" autocomplete="off">
                     </form>
                     </div>
                     <th>ID</th>
@@ -105,12 +106,52 @@
                 <th>Edad</th>
             </tr>
             </thead>
+                
+                <!-- Objeto resultado de DB socio -->
+                
+                <?php
+                $querysocio = "SELECT * FROM socios";
+                $resultado = mysqli_query($conexion, $querysocio);
+                $array = array();
+                while($tupla = mysqli_fetch_array($resultado)) {
+                    $socio = utf8_encode($tupla['nombre']);
+                    array_push($array, $socio);
+                }
+                ?>
+                
+                <!--Ajax Search -->
+
+                <script type="text/javascript">
+                    $(document).ready(function (){
+                        var items = <?= json_encode($array); ?>
+                        
+                        $("#busquedaSocio").autocomplete({
+                            source: items,
+                            select: function (event, item) {
+                                var params = {
+                                    socio : item.item.value
+                                };
+                                $.get("getSocio.php", params, function (response) {
+                                    console.log(response);
+                                    var json = JSON.parse(response);
+                                    if (json.status == 200){
+                                        $("#busquedaSocio").html(json.nombre);
+                                        $("#searchLoad").html("<img src='./img/pacman.gif' alt='Pacman Search' height='38' width='38'>");
+                                    }else{
+                                        
+                                    }
+                                });
+                            }
+                        });
+                    });
+                </script>
+                
                 <?php 
                 if (!empty($_POST['busquedaSocio']) && ($_POST['busquedaSocio'] != "")){
                     $busquedasocio = trim($_POST['busquedaSocio']);
                     $query_search = "SELECT * FROM socios WHERE nombre='$busquedasocio' OR apellido='$busquedasocio' OR direccion='$busquedasocio' ORDER BY idsocio";
                     $result_query_search = mysqli_query($conexion, $query_search);
-                    while($row = mysqli_fetch_assoc($result_query_search)){ ?
+                    while($row = mysqli_fetch_assoc($result_query_search)){ ?>
                     <tbody>
                     <tr>
                         <td><?php echo $row['idsocio']; ?></td>
@@ -119,13 +160,12 @@
                         <td><?php echo $row['direccion']; ?></td>
                         <td><?php echo $row['edad']; ?></td>
                     </tr>
-                    <?php } ?>
                 <?php } ?>
-
-                </tbody>
+                <?php } ?>
+                    </tbody>
             </table>
         </div>
   </div>
 </main>
-
 <?php include('includes/footer.php'); ?>
+
