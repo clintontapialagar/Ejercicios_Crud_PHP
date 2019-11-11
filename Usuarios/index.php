@@ -70,8 +70,7 @@
                     <th>Cedula</th>
                     <th>Nombre</th>
                     <th>Apellido</th>
-                    <?php if(isset($_POST['contrasena'])){echo '<th>Contraseña</th>';}?>
-                    <th>Contraseña encriptada</th>
+                    <th>Contraseña</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -84,7 +83,6 @@
                     <td><?php echo $row['cedula']; ?></td>
                     <td><?php echo $row['nombre']; ?></td>
                     <td><?php echo $row['apellido']; ?></td>
-                    <?php if (isset($_POST['contrasena'])){echo '<td>' .$contraseña. '</td>';}?>
                     <td><?php echo $row['contrasena']; ?></td>
                     <td>
                     <a href="editar.php?cedula=<?php echo $row['cedula']?>" class="btn btn-secondary">
@@ -97,15 +95,15 @@
                 </tr>
                 <?php } ?>
                 </tbody>
+            </table>
 
-        <div class="col-md-8">
             <table class="table table-bordered">
             <thead>
             <tr>
                 <th>Cedula</th>
                 <th>Nombre</th>
                 <th>Apellido</th>
-                <th>Contraseña encriptada</th>
+                <th>Contraseña</th>
             </tr>
             </thead>
 
