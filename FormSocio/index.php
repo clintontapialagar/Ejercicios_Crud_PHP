@@ -95,7 +95,6 @@
                 <?php } ?>
                 </tbody>
 
-        <div class="col-md-8">
             <table class="table table-bordered">
             <thead>
             <tr>
@@ -163,8 +162,7 @@
                 <?php } ?>
                 <?php } ?>
                     </tbody>
-            </table>
-        </div>
+			</table>
   </div>
 </main>
 <?php include('includes/footer.php'); ?>
