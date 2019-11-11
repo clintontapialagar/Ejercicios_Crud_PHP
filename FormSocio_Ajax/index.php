@@ -94,10 +94,10 @@
                 <?php } ?>
                 </tbody>
             </tabla>
-        </div>
 
         <!-- Tabla búsqueda de socio -->
-        <div id="resultado"></div>
+        <table id="resultado" class="table table-bordered"></table>
+        </div>
     </div>
 </main>
 
@@ -106,19 +106,22 @@
 <script type="text/javascript">
     $(document).ready(function (){
         $("#busquedaSocio").keyup(function(){
-            var txt = $(this).val();
-            if (txt != ''){
-
+            var txt = $("#busquedaSocio").val();
+            $('#resultado').html('');
+            if(txt == '') {
+            
             }else {
-                $('#resultado').html('');
                 $.ajax({
                     url:"getSocio.php",
                     method:"post",
                     data:{search:txt},
                     dataType:"text",
-                    success:function(data)
-                    {
+                    success:function(data){
                         $('#resultado').html(data);
+                    },
+                    error:function (xhr, ajaxOptions, thrownError){
+                            //On error, we alert user
+                            alert(thrownError);
                     }
                 });
             }
