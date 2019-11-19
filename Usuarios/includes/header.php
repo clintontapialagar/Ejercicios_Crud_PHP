@@ -43,4 +43,4 @@
     <div class="container">
         <a class="navbar-brand" href="index.php">Registro de Usuario</a>
     </div>
-</nav>
+</nav><body>
