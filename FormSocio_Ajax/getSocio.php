@@ -6,7 +6,7 @@ $output = '';
 
 $sql = "SELECT * FROM socios WHERE idsocio LIKE '%".$_POST["search"]."%' OR nombre LIKE '%".$_POST["search"]."%' OR apellido LIKE '%".$_POST["search"]."%' OR direccion LIKE '%".$_POST["search"]."%' OR edad LIKE '%".$_POST["search"]."%'";
 $result = mysqli_query($conexion, $sql);
-if (mysqli_num_rows($result)>0){
+if (mysqli_num_rows($result)==1){
     $output .= '<thead>
                     <tr>
                         <th>ID</th>
