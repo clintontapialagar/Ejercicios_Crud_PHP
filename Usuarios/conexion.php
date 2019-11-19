@@ -2,6 +2,6 @@
  session_start();
 
  //conexion con base de datos
-$conexion=new mysqli("localhost","root","","database") or die ("No se ha podido conectar al servidor de Base de datos ") . mysqli_connect_error();
+$conexion = mysqli_connect("sql306.0fees.us", "0fe_24591919", "carlosdelviento123", "0fe_24591919_database") or die(mysqli_erro($mysqli));
 
 ?>

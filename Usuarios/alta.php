@@ -32,7 +32,7 @@ if (isset($_POST['Registrarme'])) {
         header('Location: index.php');
     }else{
         $numeroidquery = mysqli_query($conexion,"select * from usuarios where cedula='$cedula'");
-        if (mysqli_num_rows($numeroidquery)<1){
+        if (mysqli_num_rows($numeroidquery) ==0){
             $query = "INSERT INTO usuarios(cedula, nombre, apellido, contrasena) VALUES ('$cedula', '$nombre', '$apellido', '$contraseña')";
             $result = mysqli_query($conexion, $query);
             $_SESSION['message'] = 'Usuario ingresado con éxito';

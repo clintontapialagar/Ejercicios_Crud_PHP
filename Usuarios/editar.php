@@ -39,13 +39,13 @@ if (isset($_POST['actualizar'])) {
             <input type="number" name="cedula" class="form-control" value="<?php echo $cedula; ?>" placeholder="Actualizar cedula" pattern="[0,9]{1,8}" maxlength="8" disabled>
         </div>
         <div class="form-group">
-            <input type="text" name="nombre" class="form-control" value="<?php echo $nombre;?>" placeholder="Actualizar nombre" pattern="[A-z]{3,20}" maxlength="20" required autofocus/>
+            <input type="text" name="nombre" class="form-control" value="<?php echo $nombre;?>" placeholder="Actualizar nombre" pattern="[A-z A-z]{3,20}" maxlength="20" required autofocus/>
         </div>
         <div class="form-group">
             <input type="text" name="apellido" class="form-control" value="<?php echo $apellido;?>" placeholder="Actualizar apellido" pattern="[A-z]{3,20}" maxlength="20" required autofocus/>
         </div>
         <div class="form-group">
-            <input type="password" name="contrasena" class="form-control" value="<?php echo $contraseña;?>" placeholder="Actualizar contraseña" pattern="[A-z A-Z 0-9]{3,30}" maxlength="50" required autofocus/>
+            <input type="password" name="contrasena" class="form-control" value="<?php echo $contraseña;?>" placeholder="Actualizar contraseña" pattern="[A-z A-Z 0-9]{3,50}" maxlength="50" required autofocus/>
         </div>
         <button class="btn-success" name="actualizar">
           Actualizar

@@ -64,7 +64,7 @@
                     <div class="form-group has-search">
                     <span class="fa fa-search form-control-feedback"></span>
                     <form action="index.php" method="POST">
-                        <input type="search" name="busquedaUsuario" class="form-control" placeholder="Búsqueda" maxlength="20" autocomplete="off" required autofocus>
+                        <input type="search" name="busquedaUsuario" id="busquedaUsuario" class="form-control" placeholder="Buscar usuario" maxlength="20" autocomplete="off">
                     </form>
                     </div>
                     <th>Cedula</th>
@@ -96,36 +96,39 @@
                 <?php } ?>
                 </tbody>
             </table>
-
-            <table class="table table-bordered">
-            <thead>
-            <tr>
-                <th>Cedula</th>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Contraseña</th>
-            </tr>
-            </thead>
-
-                <?php 
-                if (!empty($_POST["busquedaUsuario"]) && ($_POST["busquedaUsuario"] != "")){
-                    $busquedausuario = trim($_POST["busquedaUsuario"]);
-                    $query_search = "SELECT * FROM usuarios WHERE cedula='$busquedausuario' OR nombre='$busquedausuario' OR apellido='$busquedausuario' ORDER BY cedula";
-                    $result_query_search = mysqli_query($conexion, $query_search);
-                    while($row = mysqli_fetch_assoc($result_query_search)){ ?>
-                    <tbody>
-                    <tr>
-                        <td><?php echo $row['cedula']; ?></td>
-                        <td><?php echo $row['nombre']; ?></td>
-                        <td><?php echo $row['apellido']; ?></td>
-                        <td><?php echo $row['contrasena']; ?></td>
-                    </tr>
-                    <?php } ?>
-                <?php } ?>
-                </tbody>
-            </table>
+        <!-- Tabla búsqueda de usuario -->
+        <table id="resultado" class="table table-bordered"></table>
         </div>
   </div>
 </main>
+
+<!--Ajax Search -->
+
+<script type="text/javascript">
+    $(document).ready(function (){
+        $("#busquedaUsuario").keyup(function(){
+            var txt = $("#busquedaUsuario").val();
+            $('#resultado').html('');
+            if(txt == '') {
+            
+            }else {
+                $.ajax({
+                    url:"getUsuario.php",
+                    method:"post",
+                    data:{search:txt},
+                    dataType:"text",
+                    success:function(data){
+                        $('#resultado').html(data);
+                    },
+                    error:function (xhr, ajaxOptions, thrownError){
+                            //On error, we alert user
+                            alert(thrownError);
+                    }
+                });
+            }
+        });
+    });
+</script>
+
 
 <?php include('includes/footer.php'); ?>
