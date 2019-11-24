@@ -30,10 +30,10 @@ if (isset($_POST['Registrar'])){
 	if (!empty($numeroid) && (is_numeric($numeroid)) && ($numeroid !="0") && (!empty($nombre)) && (!is_numeric($nombre)) && (!empty($precio)) && (($precio)>1) && (!empty($cantidad)) && (($cantidad)>1) && (!empty($procedencia))){
 	
 	//conexion con base de datos
-	$servidor_db="localhost";
-    $usuario_db="root";
-    $clave_db="";
-    $db_nombre="inventario";
+	$servidor_db="sql306.0fees.us";
+    $usuario_db="0fe_24591919";
+    $clave_db="carlosdelviento123";
+    $db_nombre="0fe_24591919_inventario";
 	$nombretabla="mercaderia";
 	$conexion=new mysqli($servidor_db,$usuario_db,$clave_db,$db_nombre) or die ("No se ha podido conectar al servidor de Base de datos ") . mysqli_connect_error();
 	
@@ -124,7 +124,7 @@ if (isset($_POST['Registrar'])){
 	//creo la tabla y me paseo por el array para llenar las filas
 	
 	echo "<div class='table-responsive'>";
-	echo "<table class='table table-condensed' cellpadding='10' cellspacing='2'>";
+	echo "<table class='table table-hover table-borderer' cellpadding='10' cellspacing='2'>";
 	echo "<tr bgcolor =#baf291>";
 	echo "<td class='info'>ID nº</td>";
 	echo "<td class='info'>Nombre</td>";
@@ -179,9 +179,15 @@ if (isset($_POST['Registrar'])){
     exit();
 }
 } else {
-	//si el usuario no es verificado volvera al formulario de ingreso
-	header('Location: index.php');
-	
+    //si no es valido volvemos al formulario inicial
+    echo "<script language='javascript'>";
+	echo "alert('El usuario $usuario y la clave $clave no son válidos')";
+	echo "</script>";
+	echo "<script type='text/javascript'>";
+	echo "window.location = 'index.php'";
+    echo "</script>";
+    //header('Location: index.php');
+    exit();
 }
 ?>
 <br><br>

@@ -17,7 +17,7 @@ if (verificar_usuario()){
 
 	//si el usuario es verificado puede acceder al contenido permitido a el
     print '
-    <div class="container-fluid">
+    <div class="container">
     <header>
         <h3>Alta de mercaderia</h3>
     </header>
@@ -26,7 +26,7 @@ if (verificar_usuario()){
 
     <!--Alta 1-->
     <div class="form-group has-warning">
-        <label class="control-label col-md-3" for="id">Codigo de la Mercaderia:</label>
+        <label class="control-label col-md-5" for="id">Codigo de la Mercaderia:</label>
         <div class="col-md-10">
             <input class="form-control" type="number" id="id" name="id" placeholder="Ingrese aqui Codigo" maxlength="3" required min="1" step="1" max="999" required>
         </div>
@@ -57,20 +57,16 @@ if (verificar_usuario()){
     </div>
 
     <!--Alta 5-->
-    <div class="form-check>
-        <label class="form-check-label col-md-5" for="deporte">Procedencia Mercaderia</label>
-    </div>
-    <div class="form-check" has-warning">
+    <div class="form-group has-warning">
+        <label class="control-label col-md-5" for="deporte"> Procedencia Mercaderia</label>
+        <div class="form-check has-warning col-md-10">
             <input class="form-check-input" type="radio" name="procedencia" id="nacional" value="Nacional" required>
-            <label class="form-check-label" for="radio1">
-                Nacional
-            </label>
-    </div>
-    <div class="form-check" has-warning">
-        <input class="form-check-input" type="radio" name="procedencia" id="importado" value="Importado" required>
-        <label class="form-check-label" for="radio2">
-            Importado
-        </label>
+            <label class="form-check-label" for="radio1">Nacional</label>
+        </div>
+        <div class="form-check has-warning col-md-10">
+            <input class="form-check-input" type="radio" name="procedencia" id="importado" value="Importado" required>
+            <label class="form-check-label" for="radio2">Importado</label>
+        </div>
     </div>
 
     <!--Envio Formulario-->
