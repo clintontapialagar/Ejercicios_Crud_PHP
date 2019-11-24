@@ -3,7 +3,7 @@
 //funcion para conectar a la base de datos y verificar la existencia del usuario
 function conexiones($usuario, $clave) {
 	//conexion con el servidor de base de datos MySQL
-	$conectar = mysqli_connect("sql306.0fees.us", "0fe_24591919", "carlosdelviento123", "0fe_24591919_inventario");
+	$conectar = new mysqli("localhost", "root", "", "inventario");
 	//sentencia sql para consultar el nombre del usuario
 	$sql = "SELECT * FROM `usuarios` WHERE usuario='$usuario' AND clave=SHA1('$clave')";
 	//ejecucion de la sentencia anterior
@@ -40,10 +40,10 @@ function validaUsuario() {
 
 function validaConexion(){
 	//conexion con base de datos
-	$servidor_db="sql306.0fees.us";
-	$usuario_db="0fe_24591919";
-	$clave_db="carlosdelviento123";
-	$nombre_db="0fe_24591919_inventario";
+	$servidor_db="localhost";
+	$usuario_db="root";
+	$clave_db="";
+	$nombre_db="inventario";
 	$nombretabla="mercaderia";
 	$conexion=new mysqli($servidor_db,$usuario_db,$clave_db,$nombre_db) or die ("No se ha podido conectar al servidor de Base de datos ") . mysqli_connect_error();
 
