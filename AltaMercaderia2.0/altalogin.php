@@ -3,7 +3,7 @@
 //funcion para conectar a la base de datos y verificar la existencia del usuario
 function conexiones($usuario, $clave) {
 	//conexion con el servidor de base de datos MySQL
-	$conectar = new mysqli("localhost", "root", "", "inventario");
+	$conectar = mysqli_connect("localhost", "root", "", "inventario");
 	//sentencia sql para consultar el nombre del usuario
 	$sql = "SELECT * FROM `usuarios` WHERE usuario='$usuario' AND clave=SHA1('$clave')";
 	//ejecucion de la sentencia anterior
@@ -44,11 +44,10 @@ function validaConexion(){
 	$usuario_db="root";
 	$clave_db="";
 	$nombre_db="inventario";
-	$nombretabla="mercaderia";
 	$conexion=new mysqli($servidor_db,$usuario_db,$clave_db,$nombre_db) or die ("No se ha podido conectar al servidor de Base de datos ") . mysqli_connect_error();
 
 	//validamos no halla resultados duplicados
-	$numeroidquery = mysqli_query($conexion,"select id from $nombretabla where id='$numeroid'");
+	$numeroidquery = mysqli_query($conexion,"select id from mercaderia where id='$numeroid'");
 	if (mysqli_num_rows($numeroidquery)>0){
 		//si existen duplicados muestro mensaje
 		echo "<script language='javascript'>";
